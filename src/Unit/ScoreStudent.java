@@ -2,9 +2,10 @@ package Unit;
 
 import Runsystem.Main;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
-public class ScoreStudent {
+public class ScoreStudent implements Serializable {
 
 
     private Student student;

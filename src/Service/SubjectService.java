@@ -9,10 +9,11 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class SubjectService implements Manipulation {
+    public static final String SUBJECT_DATAFILE = "subject.dat";
 
     @Override
     public void input() {
-        System.out.println("Nhập thông tinn môn học");
+        System.out.println("Nhập thông tin môn học");
         System.out.println("Nhập số môn học muốn thêm");
         int number = 0;
         boolean check2 = false;
@@ -33,6 +34,7 @@ public class SubjectService implements Manipulation {
             subject.inputInfo();
             add(subject);
         }
+        Main.fileUtil.writefileData(Main.subjects, SUBJECT_DATAFILE);
 
     }
     public void add(Subject subject){

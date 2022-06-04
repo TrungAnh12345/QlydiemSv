@@ -2,10 +2,10 @@ package File;
 
 import com.sun.xml.internal.ws.util.StringUtils;
 
-import java.io.FileOutputStream;
-import java.io.IOError;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+import java.io.*;
+
+
+
 
 public class FileData implements DataRead, DataWrite{
 
@@ -13,6 +13,11 @@ public class FileData implements DataRead, DataWrite{
     public Object readData(String fileName) {
         if(StringUtil.isNullOrEmpty(fileName)){
             return null;
+        }
+        try(ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(fileName)))  {
+            return objectInputStream.readObject();
+        }catch (IOException | ClassNotFoundException e){
+            e.printStackTrace();
         }
 
         return null;

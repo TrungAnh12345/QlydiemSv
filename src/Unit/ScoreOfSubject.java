@@ -1,6 +1,8 @@
 package Unit;
 
-public class ScoreOfSubject {
+import java.io.Serializable;
+
+public class ScoreOfSubject implements Serializable {
 
     private Subject subject;
     private float score;

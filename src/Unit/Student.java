@@ -2,9 +2,10 @@ package Unit;
 
 import Runsystem.Main;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
-public class Student extends Person {
+public class Student extends Person implements Serializable {
 
     private static int AUTO_ID = 10000;
     private String className;

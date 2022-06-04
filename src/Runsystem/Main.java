@@ -1,5 +1,7 @@
 package Runsystem;
 
+import File.DataUtil;
+import File.FileData;
 import Service.ScoreStudentService;
 import Service.StudentManipulation;
 import Service.SubjectService;
@@ -12,12 +14,24 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
-    public static Student [] students = new Student[200];
-    public static Subject [] subjects = new Subject[200];
-    public static ScoreStudent [] scoreStudents = new ScoreStudent[200];
+    public static Student [] students ;
+    public static Subject [] subjects ;
+    public static ScoreStudent [] scoreStudents ;
 
+    public static FileData fileUtil = new FileData();
+    public static void initlizeData(){
+        Object subjectFromFile = fileUtil.readData(SubjectService.SUBJECT_DATAFILE);
+        Main.subjects = DataUtil.isNullOrEmpty(subjectFromFile) ? new Subject[200] : (Subject[]) subjectFromFile;
+
+        Object studentFromFile = fileUtil.readData(StudentManipulation.STUDENT_DATA_FILE) ;
+        Main.students = DataUtil.isNullOrEmpty(studentFromFile) ? new Student[200] : (Student[]) studentFromFile;
+
+        Object scoreFromFile = fileUtil.readData(ScoreStudentService.SCORESTUDENT_DATA_FILE);
+        Main.scoreStudents = DataUtil.isNullOrEmpty(scoreFromFile)? new ScoreStudent[200] : (ScoreStudent[]) scoreFromFile;
+    }
 
     public static void main(String[] args) {
+        initlizeData();
         ScoreStudentService scoreStudentService = new ScoreStudentService();
         boolean isContinue = true;
         StudentManipulation studentManipulation = new StudentManipulation();

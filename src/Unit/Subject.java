@@ -3,10 +3,11 @@ package Unit;
 import Runsystem.Main;
 import constant.SubjectType;
 
+import java.io.Serializable;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Subject {
+public class Subject implements Serializable {
     private static int AUTO_ID = 100;
     SubjectType subjectType;
     private int id;

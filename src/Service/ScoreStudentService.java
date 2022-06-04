@@ -11,12 +11,16 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ScoreStudentService {
+    public static final String SCORESTUDENT_DATA_FILE = "scorestudent.dat";
+
     public void countScoreStudent(){
         if(Subject.isEmpty() || Student.isEmptyStudent()){
             System.out.println("Môn học và sinh viên hiện đang trống");
             return;
         }
         addScoreOfStudents();
+        Main.fileUtil.writefileData(Main.scoreStudents, SCORESTUDENT_DATA_FILE);
+
     }
     public Student inputStudent(){
         Student student = null;
@@ -283,9 +287,10 @@ public class ScoreStudentService {
             if (Main.scoreStudents[i] != null && Main.scoreStudents[i].getScoreOfSubjects() != null && Main.scoreStudents[i].getStudent() != null) {
                 System.out.println("Điểm của sinh viên " + Main.scoreStudents[i].getStudent().getId() + "là: " + Main.scoreStudents[i].totalScore());
             }
-
         }
     }
+
+
 
 
 }

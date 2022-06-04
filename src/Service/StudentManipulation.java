@@ -4,11 +4,14 @@ import Runsystem.Main;
 import Actions.Manipulation;
 import Unit.Student;
 
+import java.io.Serializable;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class StudentManipulation implements Manipulation {
+public class StudentManipulation implements Manipulation  {
 
+   // public static final String SUBJECT_DATAFILE = "subject.dat";
+    public static final String STUDENT_DATA_FILE = "student.dat";
     @Override
     public void input() {
         System.out.println("NHập số sinh viên muốn nhập");
@@ -32,7 +35,7 @@ public class StudentManipulation implements Manipulation {
             student.inputInfo();
             add(student);
         }
-
+        Main.fileUtil.writefileData(Main.students, STUDENT_DATA_FILE);
 
     }
     public void add(Student student){
